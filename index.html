@@ -149,7 +149,7 @@ function desenhaMural(){
   if(!recados.length){$('mural').innerHTML='<p class="vazio">'+(carregando?'Carregando os recados…':falhou?'Não consegui carregar os recados agora.':'Ainda não tem recados. Escreva o primeiro!')+'</p>';return}
   var a=[],b=[];recados.forEach(function(r,i){(i%2?b:a).push(recCard(r))});
   $('mural').innerHTML='<div class="mural"><div class="mc">'+a.join('')+'</div><div class="mc">'+b.join('')+'</div></div>'}
-function desenha(){desenhaFotos();desenhaMural();$('modo').textContent=anf?'voltar a ver como convidado':'ver como aniversariante';$('modo').hidden=!(SENHA||DEMO)}
+function desenha(){desenhaFotos();desenhaMural();$('modo').textContent=anf?'voltar a ver como convidado':'ver como aniversariante';$('modo').hidden=!(SENHA&&!DEMO)}
 /* abas */
 function troca(t){aba=t;document.querySelectorAll('.tab').forEach(function(x){x.setAttribute('aria-selected',x.dataset.t===t)});document.querySelectorAll('.pane').forEach(function(p){p.classList.toggle('on',p.id===t)});$('fab').style.display=t==='f'?'':'none';$('fab2').style.display=t==='r'?'flex':'none';window.scrollTo({top:document.querySelector('.hero').offsetHeight-6,behavior:'smooth'})}
 document.querySelectorAll('.tab').forEach(function(b){b.addEventListener('click',function(){troca(b.dataset.t)})});
